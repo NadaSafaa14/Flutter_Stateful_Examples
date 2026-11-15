@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_dio_intro/Providers/prayer_time_provider.dart';
+import 'package:flutter_application_dio_intro/Views/home_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:third_week_flutter/View/Provider/Shopping_Provider.dart';
-import 'package:third_week_flutter/View/Provider/TextFieldProvider.dart';
-import 'package:third_week_flutter/View/Provider_Test.dart';
-import 'package:third_week_flutter/View/shopping_Stateful_Test.dart';
-import 'package:third_week_flutter/View/stateful_test_follow.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,18 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => ShoppingProvider(),
-      // create: (context) => TextFieldProvider(),
-
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => PrayerTimeProvider(),)],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        // home: StatefulTestFollow(),
-        home: ShoppingStatefulTest(),
-        // home: ProviderTest(),
-
-        title: "First Flutter Project",
+        home: HomeScreen(),
+      
+        title: "Dio Intro Flutter Project",
       ),
     );
   }
 }
+
